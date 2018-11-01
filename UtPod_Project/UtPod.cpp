@@ -3,17 +3,14 @@
 using namespace std;
 
 UtPod::UtPod(){
-    songs = NULL;
     memSize = MAX_MEMORY;
 }
 
 UtPod::UtPod(int size){
-    songs = NULL;
     memSize = size;
 }
 
 int UtPod::addSong(Song const &s){
-
     if(s.getSize() <= memSize) { //if the size will allow
         SongNode *newSong = new SongNode; // create new song node
         newSong->song.setArtist(s.getArtist());
@@ -48,20 +45,20 @@ int UtPod::removeSong(Song const &s){
     }
      */
 }
+
 void UtPod::shuffle() {
 
 }
 
 void UtPod::showSongList() {
-
     SongNode *travel;
     travel = songs;
     while(travel != NULL){
         cout << travel->song.getTitle() << ", " << travel->song.getArtist() << ", " << travel->song.getSize() << endl;
         travel = travel->next;
     }
-
 }
+
 void UtPod::sortSongList() {
 
 }
