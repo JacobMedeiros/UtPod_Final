@@ -11,14 +11,13 @@ UtPod::UtPod(int size){
 }
 
 int UtPod::addSong(Song const &s){
-    if(s.getSize() <= memSize) { //if the size will allow
+    if(s.getSize() <= getRemainingMemory()) { //if the size will allow
         SongNode *newSong = new SongNode; // create new song node
         newSong->song.setArtist(s.getArtist());
         newSong->song.setTitle(s.getTitle());
         newSong->song.setSize(s.getSize());
         newSong->next = songs;
         songs = newSong;
-        memSize = memSize - s.getSize();
         return(SUCCESS);
     }
     else{
@@ -60,15 +59,26 @@ void UtPod::showSongList() {
 }
 
 void UtPod::sortSongList() {
-
+    SongNode *song1= songs;
+    SongNode *song2;
+    if(song1->next == NULL){
+        return;
+    }
+    SongNode *temp;
+    //for
 }
 
 void UtPod::clearMemory() {
-
 }
 
 int UtPod::getRemainingMemory() {
-
+    SongNode *travel;
+    travel = songs;
+    int usedMem = 0;
+    while(travel != NULL){
+        usedMem += travel->song.getSize();
+    }
+    return(memSize - usedMem);
 }
 
 
