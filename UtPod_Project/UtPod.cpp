@@ -3,10 +3,12 @@
 using namespace std;
 
 UtPod::UtPod(){
+    songs = NULL;
     memSize = MAX_MEMORY;
 }
 
 UtPod::UtPod(int size){
+    songs = NULL;
     memSize = size;
 }
 
@@ -77,6 +79,7 @@ int UtPod::getRemainingMemory() {
     int usedMem = 0;
     while(travel != NULL){
         usedMem += travel->song.getSize();
+        travel = travel->next;
     }
     return(memSize - usedMem);
 }
